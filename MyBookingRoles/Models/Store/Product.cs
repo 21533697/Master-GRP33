@@ -37,12 +37,17 @@ namespace MyBookingRoles.Models.Store
         [Range(0.01, 99999.99, ErrorMessage = "Price must be between 0.01 and 99999.99")]
         public decimal Price { get; set; }
 
-        //public double SupplierPrice { get; set; }
-
         [Display(Name = "In Store Quantity")]
         public int InStoreQuantity { get; set; }
 
         [Display(Name = "Visibility")]
         public bool IsVisible { get; set; }
+
+        //
+        [Display(Name = "Is Featured")]
+        public bool IsFeatured { get; set; }
+
+        [Display(Name = "Is On Special")]
+        public bool IsOnSpecial { get; set; }
     }
 }

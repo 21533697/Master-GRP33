@@ -3022,3 +3022,4 @@ C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingR
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.csproj.CopyComplete
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.dll
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.pdb
+C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.Migrations.featandspecial.resources

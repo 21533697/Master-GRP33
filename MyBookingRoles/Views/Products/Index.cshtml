@@ -33,6 +33,12 @@
         <th>
             @Html.DisplayNameFor(model => model.IsVisible)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFeatured)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOnSpecial)
+        </th>
         <th style="background-color: gray;text-align:center;">Actions</th>
     </tr>
 
@@ -68,6 +74,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsVisible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFeatured)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOnSpecial)
         </td>
         <td style="text-align:center;">
             @*@Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new { @class = "btn btn-success" }) |*@

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\202010132146055_Some Changes.Designer.cs">
       <DependentUpon>202010132146055_Some Changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010212009240_featandspecial.cs" />
+    <Compile Include="Migrations\202010212009240_featandspecial.Designer.cs">
+      <DependentUpon>202010212009240_featandspecial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -415,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010132146055_Some Changes.resx">
       <DependentUpon>202010132146055_Some Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010212009240_featandspecial.resx">
+      <DependentUpon>202010212009240_featandspecial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

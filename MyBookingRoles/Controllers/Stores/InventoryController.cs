@@ -33,15 +33,19 @@ namespace MyBookingRoles.Controllers.Stores
             {
                 return HttpNotFound();
             }
+
+            ViewBag.InvPrId = product.ProductID.ToString();
+
             return View(product);
+
         }
 
         [HttpPost]
-        public ActionResult AddQuantity(FormCollection fc)
+        public ActionResult AddQuantity(int id, Product product)
         {
             // write code to add quantity to product
             
-            return RedirectToAction("ListIndex");
+            return View();
         }
     }
 }

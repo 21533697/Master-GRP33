@@ -74,39 +74,39 @@ namespace Studio45.Controllers.Store
             return View(product);
         }
 
-        // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.BrandID = new SelectList(db.Brands, "BrandID", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.Category, "CategoryID", "CategoryName", product.CategoryID);
-            return View(product);
-        }
+        //// GET: Products/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Product product = db.Products.Find(id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.BrandID = new SelectList(db.Brands, "BrandID", "Name", product.BrandID);
+        //    ViewBag.CategoryID = new SelectList(db.Category, "CategoryID", "CategoryName", product.CategoryID);
+        //    return View(product);
+        //}
 
-        // POST: Products/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IsVisible,InStoreQuantity,Price")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                //
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.BrandID = new SelectList(db.Brands, "BrandID", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.Category, "CategoryID", "CategoryName", product.CategoryID);
-            return View(product);
-        }
+        //// POST: Products/Edit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "IsVisible,InStoreQuantity,Price")] Product product)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //
+        //        db.Entry(product).State = EntityState.Modified;
+        //        db.SaveChangesAsync();
+        //        return RedirectToAction("Index", new { id = product.ProductID});
+        //    }
+        //    ViewBag.BrandID = new SelectList(db.Brands, "BrandID", "Name", product.BrandID);
+        //    ViewBag.CategoryID = new SelectList(db.Category, "CategoryID", "CategoryName", product.CategoryID);
+        //    return View(product);
+        //}
 
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
