@@ -369,7 +369,8 @@
     <Content Include="Views\Store\ProductDetails.cshtml" />
     <Content Include="Views\SuperAdmin\DeliverySystemIndex.cshtml" />
     <Content Include="Views\DeliverySystem\DeliveryDashboard.cshtml" />
-    <Content Include="Views\SuperAdmin\InventoryIndex.cshtml" />
+    <Content Include="Views\Inventory\ListIndex.cshtml" />
+    <Content Include="Views\Inventory\AddQuantity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -386,7 +387,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\Site_Imaes\" />
-    <Folder Include="Views\Inventory\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009022021118_BrandVisibility.resx">

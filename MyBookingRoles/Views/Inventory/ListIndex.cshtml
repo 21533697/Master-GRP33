@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyBookingRoles.Models.Store.Product>
+
+@{
+    ViewBag.Title = "List Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>All Inventory Product List</h2>
+<div style="background-color: gray;">
+    <ul>
+        <li>Total Number Of All Product Quantity: </li>
+        <li>Total Number Of All out of Product Quantity: </li>
+        <li></li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="padding: 5px; border-top: 2px solid black;">
+        @foreach (var item in Model)
+        {
+            var base64 = "";
+            var imgsrc = "";
+
+            <div class="col-md-2" style="text-align:center; border: 1px solid black; padding: 5px;">
+
+                @if (item.ProductPics != null)
+                {
+                    base64 = Convert.ToBase64String(item.ProductPics);
+                    imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                    <img src='@imgsrc' class="img-responsive" />
+                }
+                <br />
+                <div style="border: 1px dotted white;">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Brand.Name)
+                        |
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+
+                    </p>
+                    <h4>
+                        <b><u>@Html.DisplayFor(modelItem => item.ProductName)</u></b>
+                    </h4>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.InStoreQuantity)
+                        |
+                        @Html.DisplayFor(modelItem => item.IsVisible)
+                    </p>
+                </div>
+                <br />
+                <p style="text-align:center;">
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new { @class = "btn btn-success" }) |*@
+                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-danger" })                </p>
+            </div>
+            <br />
+        }
+    </div>
+
+    <hr />
+    <br />
+
+    <div class="col-md-12">
+        <div class="row">
+            @Html.ActionLink("Back To SuperADmin", "Index", "SuperAdmin", null, new { @class = "btn btn-primary" })
+
+        </div>
+    </div>
+</div>

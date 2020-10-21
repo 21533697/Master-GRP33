@@ -11,7 +11,7 @@
     </h4>
     <hr />
     <div style="padding:5px; border: 1px solid black; background-color: white;" class="row">
-        <p>Manage Your Website Here.</p>
+        <p>Manage Your Website.</p>
     </div>
 </div>
 <br />
@@ -20,17 +20,6 @@
 
         <div class="col-md-3 col-md-9" style="border-right: 1px solid black;">
             <h2 style="border: 1px solid black; text-align: center;">Menu</h2>
-            <h4><u>Roles Menu</u></h4>
-            <br />
-            @Html.ActionLink("Manage User Roles", "UsersWithRoles", "AppUsers", null, new { @class = "btn btn-default" })<br /><br />
-            @Html.ActionLink("Manage Roles", "Index", "Role", null, new { @class = "btn btn-default" })
-            <br />
-            <hr />
-            <h4><u>Customers Menu</u></h4>
-            <br />
-            @Html.ActionLink("Manage All Cutsomer Users", "customerIndex", "SuperAdmin", null, new { @class = "btn btn-default" })<br /><br />
-            <br />
-            <hr />
             <h4><u>Store Information Menu</u> </h4>
             <br />
             @Html.ActionLink("Manage Products", "Index", "Products", null, new { @class = "btn btn-default" })<br /><br />
@@ -38,6 +27,18 @@
             @Html.ActionLink("Manage Categories", "Index", "Categories", null, new { @class = "btn btn-default" })
             <br />
             <br />
+
+            <h4><u>Customers Menu</u></h4>
+            <br />
+            @Html.ActionLink("Manage All Cutsomer Users", "customerIndex", "SuperAdmin", null, new { @class = "btn btn-default" })
+            <br />
+            <hr />
+            <h4><u>Roles Menu</u></h4>
+            <br />
+            @Html.ActionLink("Manage User Roles", "UsersWithRoles", "AppUsers", null, new { @class = "btn btn-default" })<br /><br />
+            @Html.ActionLink("Manage Roles", "Index", "Role", null, new { @class = "btn btn-default" })
+            <br />
+            <hr />
         </div>
         <div class="col-md-9" style="background-color: silver; padding:5px;">
             <h1 style="border: 1px solid black; text-align: center;"><u>SuperAdmin To-Do List</u></h1>
@@ -46,17 +47,29 @@
             <div class="col-md-4" style="border-right: 1px solid black;">
                 <h4><u>Storck Management system</u></h4>
                 <br />
-                @Html.ActionLink("Inventory management", "InventoryIndex", "SuperAdmin", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Inventory management", "ListIndex","Inventory", null, new { @class = "btn btn-primary" })
+                <br />
+                <p>
+                    Description
+                </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
                 <h4><u>Orders & Shopping</u></h4>
                 <br />
-                @Html.ActionLink("All Orders List", "Index", "Orders", null, new { @class = "btn btn-default" })<br />
+                @Html.ActionLink("All Orders List", "Index", "Orders", null, new { @class = "btn btn-default" })
+                <br />
+                <p>
+                    Description
+                </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
                 <h4><u>Delivery & Shipping</u></h4>
                 <br />
-                @Html.ActionLink("Delivery Management", "DeliverySystemIndex", "SuperAdmin", null, new { @class = "btn btn-primary" })<br />
+                @Html.ActionLink("Delivery Management", "DeliverySystemIndex", "SuperAdmin", null, new { @class = "btn btn-primary" })
+                <br />
+                <p>
+                    Description
+                </p>
             </div>
         </div>
         <br />
@@ -66,11 +79,19 @@
                 <h4><u>Subscriptions</u></h4>
                 <br />
                 @Html.ActionLink("Subscriptions management", "#", "#", null, new { @class = "btn btn-danger" })
+                <br />
+                <p>
+                    Description
+                </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
                 <h4><u>Discounts</u></h4>
                 <br />
                 @Html.ActionLink("Discount management", "#", "#", null, new { @class = "btn btn-danger" })
+                <br />
+                <p>
+                    Description
+                </p>
             </div>
         </div>
     </div>
