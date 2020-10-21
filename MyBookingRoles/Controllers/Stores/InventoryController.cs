@@ -39,15 +39,9 @@ namespace MyBookingRoles.Controllers.Stores
         [HttpPost]
         public ActionResult AddQuantity(FormCollection fc)
         {
-            //int q = System.Convert.ToInt32(fc.GetValues("quantity"));
-            //int id = System.Convert.ToInt32(fc.GetValues("id"));
-
-            //Product prd = db.Product
-            //prd.InStoreQuantity += q;
-            //db.Entry(prd).State = EntityState.Modified;
-
-            db.SaveChangesAsync();
-            return View();
+            // write code to add quantity to product
+            
+            return RedirectToAction("ListIndex");
         }
     }
 }

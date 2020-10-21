@@ -18,7 +18,6 @@ namespace MyBookingRoles.Controllers.Stores
         // GET: Orders
         public ActionResult Index(string searchWord)
         {
-            // || p.OrderName.Contains(searchWord)
             return View(db.Orders.Where(p => p.Status.Contains(searchWord) || searchWord == null).ToList());
         }
 
@@ -61,28 +60,6 @@ namespace MyBookingRoles.Controllers.Stores
             }
             return View(ord);
         }
-
-        //// GET: Orders/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Orders/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
         //// GET: Orders/Edit/5
         //public ActionResult Edit(int id)
