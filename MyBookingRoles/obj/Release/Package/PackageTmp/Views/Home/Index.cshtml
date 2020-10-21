@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 style="text-align: center;">Welcome to Our Home Page</h1>
+    <h4 class="lead" style="text-align: center;">
+        <u><b>O</b>ne of the best Online-Store Starter Website.</u>
+    </h4>
+
+    @*<div style="border: 1px solid black; background-color: white; padding: 15px;" class="row">
+        <p style="padding: 5px 5px;" class="col-md-6">
+            @Html.ActionLink("View Available Specials!", "#", "Home", null, new { @class = "btn btn-danger" })
+            <br />
+            View All Our Available Specials!
+        </p>
+        <p style="padding: 5px 5px;" class="col-md-6">
+            @Html.ActionLink("Rate Our Delivery", "#", "Home", null, new { @class = "btn btn-danger" })
+            <br />
+            Rate Your Delivery!
+        </p>
+        @if (User.IsInRole("Customer"))
+        {
+            <p style="padding: 5px 5px;" class="col-md-6">
+                @Html.ActionLink("Subscription Deals", "#", "#", null, new { @class = "btn btn-danger" })
+                <br />
+                Your Subscription Deals Here!
+            </p>
+
+        }
+    </div>*@
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="background-color: silver;">
+        <h2 style="text-align: center;">
+            <u>Store Details Here</u>
+            <br />
+            <br />
+            @Html.ActionLink("Store Catalogue", "ProdCatalogue", "Store", null, new { @class = "btn btn-success" })
+        </h2>
+        @*<p>
+            <ul>
+                <li>Saving Data To database worked. <b>Done</b></li>
+                <li>Viewing All Orders User Information</li>
+                <li>Viewing All OrderDetails User Information</li>
+                <li>Using Logged In User Information</li>
+                <li>Payment Methods And Address</li>
+            </ul>
+        </p>*@
+    </div>
+    @*<hr />
+    <div class="col-md-12" style="background-color: silver;">
+        <h2>Selected Products Here.</h2>
+        <p style="border:1px solid black;">
+            <b>10 Item Partial View</b> of all the products selected for display.
+        </p>
+    </div>
+    <hr />
+    <div class="col-md-12" style="background-color: silver;">
+        <h2>Selected Categories Here.</h2>
+        <p style="border:1px solid black;">
+            <b>10 Item Partial View</b> of all the Categories selected for display.
+        </p>
+    </div>
+    <hr />
+    <div class="col-md-12" style="background-color: silver;">
+        <h2>Selected Brands Here.</h2>
+        <p style="border:1px solid black;">
+            <b>10 Item Partial View</b> of all the Brands selected for display.
+        </p>
+    </div>*@
+</div>

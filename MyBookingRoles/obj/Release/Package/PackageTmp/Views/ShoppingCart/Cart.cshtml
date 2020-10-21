@@ -1,0 +1,90 @@
+﻿@using MyBookingRoles.Models.Store
+@{
+    ViewBag.Title = "Your Shopping Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Shopping Cart</h2>
+<h2><u>@ViewBag.User</u></h2>
+@{
+    decimal s = 0;
+}
+<div class="form-inline" id="printdivcontent">
+    @using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
+    {
+        <table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity <input type="submit" value="Update" class="btn btn-default pull-right" /></th>
+                <th>Sub</th>
+                <th>Operations</th>
+            </tr>
+            @if ((List<Item>)Session["cart"] != null)
+            {
+                foreach (var item in (List<Item>)Session["cart"])
+                {
+                    s = s + item.Pr.Price * item.Quantity;
+                    <tr>
+                        <td>R @item.Pr.ProductName</td>
+                        <td>
+                            @if (item.Pr.ProductPics != null)
+                            {
+                                var base64 = Convert.ToBase64String(item.Pr.ProductPics);
+                                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                                <img src='@imgsrc' style="width:100px;height:100px" class="img-circle" />
+                            }
+                        </td>
+                        <td>@item.Pr.Price</td>
+                        <td><input type="text" name="quantity" value="@item.Quantity" class="form-control" /></td>
+                        <td>
+                            R @(item.Pr.Price * item.Quantity)
+                        </td>
+                        <td>@Html.ActionLink("Remove Item", "Delete", "ShoppingCart", new { id = item.Pr.ProductID }, new { @class = "btn btn-default" })</td>
+                    </tr>
+
+                }
+            }
+            else
+            {
+                <tr class="row">
+                    <td>
+                        <h3>Please Add Products To Cart From the Catalogue.</h3>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <p>
+            <h3>
+                Total Amount : R @s
+            </h3>
+        </p>
+    }
+    <hr />
+    <div class="form-inline">
+        @Html.ActionLink("Continue Shopping!", "ProdCatalogue", "Store", null, new { @class = "btn btn-default" }) |
+
+
+        @if(User.Identity.IsAuthenticated && s != 0)
+        {
+            @Html.ActionLink("Check-Out!", "CheckOut", "ShoppingCart", null, new { @class = "btn btn-success" });
+        }
+        <button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print Order.</button>
+
+    </div>
+</div>
+<script type="text/javascript">
+    function PrintDiv() {
+        var divContents = document.getElementById("printdivcontent").innerHTML;
+        var printWindow = window.open('', '', 'height=800,width=1000');
+        printWindow.document.write('<html><head><title>Print DIV Content</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>

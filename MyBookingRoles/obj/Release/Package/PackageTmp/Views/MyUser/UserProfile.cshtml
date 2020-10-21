@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Your Profile - @User.Identity.GetUserName()</h2>
+
+<div class="row">
+    <p>
+        <b>Your Profile Details</b>
+        <br />
+    </p>
+    <p>
+        @Html.ActionLink("Manage Password Information!", "Index", "Manage", null, new { @class = "btn btn-default" })
+    </p>
+    <p>
+        @Html.ActionLink("Back Home", "Index", "MyUser")
+    </p>
+</div>

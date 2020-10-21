@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="jumbotron" style="text-align: center;">
+    <h1>Welocome to User Dashboard.</h1>
+    <h4 class="lead" style="text-align: center;">
+        <b><u>@User.Identity.GetUserName()</u></b>
+    </h4>
+    <hr />
+    <div style="padding:5px; border: 1px solid black; background-color: white;" class="row">
+        <p>Manage Your Account Here. As a Customer.</p>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <div class="container">
+        <h1><u><b>Your General Options</b></u></h1>
+        <br />
+        <br />
+        <div class="col-md-3">
+            @Html.ActionLink("My Orders", "customerOrders", "MyUser", null, new { @class = "btn btn-default" }) <br /><hr />
+            @*@Html.ActionLink("My Address Book", "#", "#", null, new { @class = "btn btn-danger" }) <br /><br />
+            @Html.ActionLink("My Payment Methods", "#", "#", null, new { @class = "btn btn-danger" }) <br /><br />
+            @Html.ActionLink("Customer Help", "#", "#", null, new { @class = "btn btn-danger" })*@
+        </div>
+
+        @*<div class="col-md-7" style="border-left: 1px solid black;">
+            <h1><u>To - Do List!</u></h1>
+            <ul>
+                <li>Delete account Doesnt Work.</li>
+                <li>Add User Profile Information.</li>
+                <li>.................................</li>
+                <li>Add User Orders.</li>
+                <li>Add Order Delivery Status Changes From Cancellation</li>
+                <li>Add Order Cancellation</li>
+            </ul>
+            <hr />
+            <h1><u>>Important List!</u></h1>
+            <ul>
+                <li>Fix User - Artist Service Ratings.</li>
+                <li>Subscription Options..</li>
+            </ul>
+        </div>*@
+    </div>
+</div>

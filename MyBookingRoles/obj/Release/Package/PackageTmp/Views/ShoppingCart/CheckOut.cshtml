@@ -1,0 +1,103 @@
+﻿@using MyBookingRoles.Models.Store
+
+@{
+    ViewBag.Title = "Check-Out";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><u>Your CheckOut : @ViewBag.User</u></h2>
+
+@{
+    decimal s = 0;
+}
+<div class="form-inline">
+    <h2>Your Order Products</h2>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sub</th>
+            <th>Operations</th>
+        </tr>
+        @if ((List<Item>)Session["cart"] != null)
+        {
+            foreach (var item in (List<Item>)Session["cart"])
+            {
+                s = item.Price + item.Pr.Price * item.Quantity;
+                <tr>
+                    <td>@item.Pr.ProductName</td>
+                    <td>R @item.Pr.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        R @(item.Pr.Price * item.Quantity)
+                    </td>
+                    <td>@Html.ActionLink("Remove Item", "Delete", "ShoppingCart", new { id = item.Pr.ProductID }, new { @class = "btn btn-default" })</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="row">
+                <td style="color: red;">
+                    <h3>Check-Out Empty .</h3>
+                    <p>
+                        @Html.ActionLink("Go Back Shopping!", "ProdCatalogue", "Store")
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <p>
+        <h3>
+            Total Amount : R @s
+        </h3>
+    </p>
+
+    <hr />
+    @*<ul>
+        <li>Please Use Logged In user Details</li>
+        <li>Add user Address Details</li>
+    </ul>*@
+    @if (s != 0)
+    {
+        <div class="form-inline">
+            @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customerform" }))
+            {
+                <h2>Customer & Delivery Information</h2>
+                <table class="table table-bordered table-hover table-condensed">
+                    <tr>
+                        <td>Customer Name</td>
+                        <td><input type="text" name="custName" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Customer Phone</td>
+                        <td><input type="text" name="custPhone"  required/></td>
+                    </tr>
+                    <tr>
+                        <td>Customer Email</td>
+                        <td><input type="text" name="custEmail"  value="@ViewBag.User"/></td>
+                    </tr>
+                    <tr>
+                        <td>Customer Address</td>
+                        <td><input type="text" name="custAddress" required/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><input type="submit" value="Process Order" /></td>
+                    </tr>
+                </table>
+            }
+        </div>
+
+        <hr />
+        <div class="row">
+            @Html.ActionLink("Go Back Shopping!", "ProdCatalogue", "Store", null, new { @class = "btn btn-default pull-left" })
+            
+            @*@Html.ActionLink("Save Shopping Cart!", "#", "#", null, new { @class = "btn btn-danger" }) | 
+            @Html.ActionLink("View Saved Shoppings!", "#", "#", null, new { @class = "btn btn-danger" })*@
+        </div>
+    }
+</div>
+
+

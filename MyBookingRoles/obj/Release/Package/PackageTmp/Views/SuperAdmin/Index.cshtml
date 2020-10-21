@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="jumbotron" style="text-align: center;">
+    <h1>Welocome to SuperAdmin Dashboard.</h1>
+    <h4 class="lead" style="text-align: center;">
+        <b><u>@User.Identity.GetUserName()</u></b>
+    </h4>
+    <hr />
+    <div style="padding:5px; border: 1px solid black; background-color: white;" class="row">
+        <p>Manage Your Website Here. SuperAdmin.</p>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="container">
+        <div class="col-md-3"  style="border-right: 1px solid black;">
+            <b>Roles</b><br />
+            @Html.ActionLink("Manage User Roles", "UsersWithRoles", "AppUsers", null, new { @class = "btn btn-default" })<br /><br />
+            @Html.ActionLink("Roles", "Index", "Role", null, new { @class = "btn btn-default" })
+            <br />
+            <br />
+            <b>Customers </b><br />
+            @Html.ActionLink("Manage Users", "customerIndex", "SuperAdmin", null, new { @class = "btn btn-default" })<br /><br />
+            @Html.ActionLink("Register New User", "Register", "Account", null, new { @class = "btn btn-default" })
+            @*<br />
+            <br />
+            <b>Status - </b><br />
+            @Html.ActionLink("Manage Order Status", "#", "#", null, new { @class = "btn btn-danger" })<br /><br />*@
+            <br />
+            <br />
+            <b>Store Information </b><br />
+            @Html.ActionLink("Manage Products", "Index", "Products", null, new { @class = "btn btn-default" })<br /><br />
+            @Html.ActionLink("Manage Brands", "Index", "Brands", null, new { @class = "btn btn-default" })<br /><br />
+            @Html.ActionLink("Manage Categories", "Index", "Categories", null, new { @class = "btn btn-default" })
+            <br />
+            <br />
+            <b>Orders & Shopping Carts</b><br />
+            @Html.ActionLink("Orders", "Index", "Orders", null, new { @class = "btn btn-default" })<br/><br />
+            @*@Html.ActionLink("Manage ShoppingCarts", "Index", "#", null, new { @class = "btn btn-danger" })*@
+        </div>
+        <div class="col-md-8" style="background-color: silver;">
+            <h1><u>SuperAdmin To-List</u></h1>
+            <ul>
+                @*<li>Charts.</li>
+                <li>Specials</li>
+                <li>Subscriptions...</li>*@
+            </ul>
+        </div>
+    </div>
+</div>

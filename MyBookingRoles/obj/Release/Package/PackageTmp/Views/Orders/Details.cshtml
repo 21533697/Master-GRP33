@@ -1,0 +1,76 @@
+﻿@model MyBookingRoles.Models.Store.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Order Details</h2>
+
+<div class="row" style="background-color: silver;">
+    <h4>Order number : @Html.DisplayFor(model => model.OrderId)</h4>
+
+    <ul class="dl-horizontal form-inline list-unstyled">
+        <li>
+            Order Date : @Html.DisplayFor(model => model.OrderDate)
+        </li>
+        <li>
+            Payment Type : @Html.DisplayFor(model => model.PaymentType)
+        </li>
+        <li>
+            Status : @Html.DisplayFor(model => model.Status)
+        </li>
+        <li><br /><b>Customer Information</b></li>
+        <li>
+            Customer Name : @Html.DisplayFor(model => model.CustomerName)
+        </li>
+        <li>
+            CustomerPhone : @Html.DisplayFor(model => model.CustomerPhone)
+        </li>
+        <li>
+            CustomerEmail : @Html.DisplayFor(model => model.CustomerEmail)
+        </li>
+        <li>
+            CustomerAddress : @Html.DisplayFor(model => model.CustomerAddress)
+        </li>
+    </ul>
+</div>
+<hr />
+<div class="row">
+
+    <h3>Order Details</h3>
+
+    <table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
+        <tr>
+            <th>Product (Id)Name</th>
+            <th>Order id</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        @{ decimal s = 0; }
+        @foreach (var item in Model.OrderDetails)
+        {
+            s = s + item.Price * item.Quantity;
+            <tr>
+                <td>@item.ProdId</td>
+                <td>@item.OrderId</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    
+</div>
+<h3><u>Total Order Price : R @s.ToString()</u></h3>
+<p>
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        @Html.ActionLink("Back to List", "Index","Orders")
+    }
+    else
+    {
+        @Html.ActionLink("Back to Home", "customerOrders", "MyUser")
+    }
+</p>

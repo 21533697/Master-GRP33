@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 style="text-align: center;">Welcome to Our Home Page</h1>
+    <h4 class="lead" style="text-align: center;">
+        <u><b>O</b>ne of the best Online-Store Starter Website.</u>
+    </h4>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="background-color: silver;">
+        <div style="text-align: center;">
+            <div class="col-md-4">
+                <u>Store Details Here</u>
+                <br />
+                @Html.ActionLink("Store Catalogue", "ProdCatalogue", "Store", null, new { @class = "btn btn-success" })<br /><br />
+            </div>
+            <div class="col-md-4">
+                <u>Brands Here</u>
+                <br />
+                @Html.ActionLink("Brands Catalogue", "BrandCatalogue", "Store", null, new { @class = "btn btn-success" })<br /><br />
+            </div>
+            <div class="col-md-4">
+                <u>Categories Here</u>
+                <br />
+                @Html.ActionLink("Categories Catalogue", "CategoryCatalogue", "Store", null, new { @class = "btn btn-success" })
+            </div>
+
+            <hr />
+        </div>
+        
+        <div class="col-md-12" style="text-align:left">
+            <p><b><u>Products On Special/Featured.</u></b></p>
+            <br />
+
+            <div class="row" style="padding: 5px; background-color: white;">
+                Here.
+            </div>
+            <hr />
+        </div>
+        @*<p>
+            <ul>
+                <li>Using Logged In User Information</li>
+                <li>Payment Methods And Address</li>
+                <li>Delivery Methods And Delivery Address</li>
+            </ul>
+        </p>*@
+    </div>    
+</div>
