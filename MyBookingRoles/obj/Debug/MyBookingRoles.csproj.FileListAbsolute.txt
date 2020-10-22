@@ -3023,3 +3023,5 @@ C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingR
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.dll
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.pdb
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.Migrations.featandspecial.resources
+C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\bin\PayPal.dll
+C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\bin\PayPal.xml

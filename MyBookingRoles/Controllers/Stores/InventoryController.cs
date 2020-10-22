@@ -41,11 +41,16 @@ namespace MyBookingRoles.Controllers.Stores
         }
 
         [HttpPost]
-        public ActionResult AddQuantity(int id, Product product)
+        public ActionResult AddQuantity(int id, FormCollection fc)
         {
+            int q = System.Convert.ToInt32(fc["AddedQuantity"]);
             // write code to add quantity to product
-            
-            return View();
+            Product product = db.Products.Find(id);
+            product.InStoreQuantity += q;
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ListIndex");
         }
     }
 }
