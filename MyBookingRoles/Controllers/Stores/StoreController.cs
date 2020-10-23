@@ -18,9 +18,33 @@ namespace Studio45.Controllers.Store
 
         // GET: StoreHome
 
-        public ActionResult ProdCatalogue(string searchWord)
+        public ActionResult ProdCatalogue(string movieGenre, string searchWord)
         {
-            return View(db.Products.Where(p => p.ProductName.Contains(searchWord) || searchWord == null && p.IsVisible == true).ToList());
+            var GenreLst = new List<string>();
+
+            var GenreQry = from d in db.Products
+                           orderby d.Brand.Name
+                           select d.Brand.Name;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreLst);
+
+            var movies = from m in db.Products
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchWord))
+            {
+                movies = movies.Where(s => s.ProductName.Contains(searchWord));
+            }
+
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Brand.Name == movieGenre);
+            }
+
+            return View(movies);
+
+            //return View(db.Products.Where(p => p.ProductName.Contains(searchWord) || searchWord == null && p.IsVisible == true).ToList());
         }
 
         // GET: ProductDetails

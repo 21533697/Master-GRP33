@@ -15,9 +15,49 @@ namespace MyBookingRoles.Controllers.Stores
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Inventory
-        public ActionResult ListIndex()
+        public ActionResult ListIndex(string prodCategory, string movieGenre, string searchWord)
         {
-            return View(db.Products.ToList());
+            var GenreLst = new List<string>();
+            var prodCatLst = new List<string>();
+
+            var GenreQry = from d in db.Products
+                           orderby d.Brand.Name
+                           select d.Brand.Name;
+
+            var prodCat = from d in db.Products
+                          orderby d.Category.CategoryName
+                          select d.Category.CategoryName;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            prodCatLst.AddRange(prodCat.Distinct());
+
+            ViewBag.movieGenre = new SelectList(GenreLst);
+            ViewBag.prodCategory = new SelectList(prodCatLst);
+
+            var movies = from m in db.Products
+                         select m;
+
+            ViewBag.prodQ = db.Products.Sum(m=>m.InStoreQuantity);
+            ViewBag.ordQ = db.OrderDetails.Sum(m=>m.Quantity);
+
+            if (!String.IsNullOrEmpty(searchWord))
+            {
+                movies = movies.Where(s => s.ProductName.Contains(searchWord));
+            }
+
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Brand.Name == movieGenre);
+            }
+
+            if (!string.IsNullOrEmpty(prodCategory))
+            {
+                movies = movies.Where(x => x.Category.CategoryName == prodCategory);
+            }
+
+            return View(movies);
+
+            //return View(db.Products.ToList());
         }
 
         // GET: Inventory AddQuantity

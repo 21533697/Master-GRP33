@@ -10,7 +10,7 @@
         <b><u>@User.Identity.GetUserName()</u></b>
     </h4>
     <hr />
-    <div style="padding:5px; border: 1px solid black; background-color: white;" class="row">
+    <div style="padding:5px; border: 1px solid black; background-color: seagreen;" class="row">
         <p>Manage Your Website.</p>
     </div>
 </div>
@@ -41,34 +41,31 @@
             <hr />
         </div>
         <div class="col-md-9" style="background-color: silver; padding:5px;">
-            <h1 style="border: 1px solid black; text-align: center;"><u>SuperAdmin To-Do List</u></h1>
+            @*<h1 style="border: 1px solid black; text-align: center;"><u>SuperAdmin To-Do List</u></h1>*@
             <br />
             <br />
             <div class="col-md-4" style="border-right: 1px solid black;">
-                <h4><u>Storck Management system</u></h4>
+                <h3><u>Stock Management</u></h3>
                 <br />
-                @Html.ActionLink("Inventory management", "ListIndex","Inventory", null, new { @class = "btn btn-primary" })
-                <br />
+                
                 <p>
-                    Description
+                    @Html.ActionLink("Inventory management", "ListIndex", "Inventory", null, new { @class = "btn btn-primary" })
                 </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
-                <h4><u>Orders & Shopping</u></h4>
+                <h3><u>Orders & Shopping</u></h3>
                 <br />
-                @Html.ActionLink("All Orders List", "Index", "Orders", null, new { @class = "btn btn-default" })
-                <br />
+                
                 <p>
-                    Description
+                    @Html.ActionLink("All Orders List", "Index", "Orders", null, new { @class = "btn btn-default" })
                 </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
-                <h4><u>Delivery & Shipping</u></h4>
+                <h3><u>Delivery & Shipping</u></h3>
                 <br />
-                @Html.ActionLink("Delivery Management", "DeliverySystemIndex", "SuperAdmin", null, new { @class = "btn btn-primary" })
-                <br />
+                
                 <p>
-                    Description
+                    @Html.ActionLink("Delivery Management", "DeliverySystemIndex", "SuperAdmin", null, new { @class = "btn btn-primary" })
                 </p>
             </div>
         </div>
@@ -76,21 +73,32 @@
         <hr />
         <div class="col-md-9" style="background-color: silver; padding:5px;">
             <div class="col-md-4" style="border-right: 1px solid black;">
-                <h4><u>Subscriptions</u></h4>
+                <h4><u>Discounts</u></h4>
                 <br />
-                @Html.ActionLink("Subscriptions management", "#", "#", null, new { @class = "btn btn-danger" })
-                <br />
+                
                 <p>
-                    Description
+                    @Html.ActionLink("Manage Discount", "#", "#", null, new { @class = "btn btn-danger" })
+                    <hr />
+                    Add Or remove Discount From a product.
                 </p>
             </div>
             <div class="col-md-4" style="border-right: 1px solid black;">
-                <h4><u>Discounts</u></h4>
+                <h4><u>Specials</u></h4>
                 <br />
-                @Html.ActionLink("Discount management", "#", "#", null, new { @class = "btn btn-danger" })
+                
+                <p>
+                    @Html.ActionLink("Manage Specials", "#", "#", null, new { @class = "btn btn-danger" })
+                    <hr />
+                    Add Or remove Special From a product.
+                </p>
+            </div>
+            <div class="col-md-4" style="border-right: 1px solid black;">
+                <h4><u>Features</u></h4>
                 <br />
                 <p>
-                    Description
+                    @Html.ActionLink("Manage Features", "#", "#", null, new { @class = "btn btn-danger" })
+                    <hr />
+                    Add Or remove Features From a product.
                 </p>
             </div>
         </div>

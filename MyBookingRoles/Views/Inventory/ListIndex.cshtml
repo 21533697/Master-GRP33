@@ -4,16 +4,40 @@
     ViewBag.Title = "List Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+@using (Html.BeginForm("ProdCatalogue", "Store", FormMethod.Get))
+{
+    <div class="row" style="background-color: black; padding: 10px;">
+        <div class="col-md-2">
+            <h4>Categ</h4>
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("movieGenre", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("prodCategory", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.TextBox("searchWord", null, null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Search Product" class="btn btn-success" />
+        </div>
+    </div>
+}
 
-<h2>All Inventory Product List</h2>
-<div style="background-color: gray;">
-    <ul>
-        <li>Total Number Of All Product Quantity: </li>
-        <li>Total Number Of All out of Product Quantity: </li>
-        <li></li>
-    </ul>
+<div class="jumbotron" style="text-align: center; padding: 10px;">
+    <h2>Inventory Management</h2>
+    <div style="padding: 5px;">
+        <p>
+            @Html.ActionLink("Manage Discount", "#", "#", null, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Manage Specials", "#", "#", null, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Manage Features", "#", "#", null, new { @class = "btn btn-success" })
+        </p>
+        <br />
+        <p style="background-color: aqua;">Product Quantity <b>Sum : @ViewBag.prodQ</b> | Out of Stock Product <b>Sum : @ViewBag.ordQ</b></p>
+    </div>
 </div>
-
+<br />
 <div class="row">
     <div class="col-md-12" style="padding: 5px; border-top: 2px solid black;">
         @foreach (var item in Model)
@@ -32,12 +56,12 @@
                 }
                 <br />
                 <div style="border: 1px dotted white;">
-                    <p>
+                    @*<p>
                         @Html.DisplayFor(modelItem => item.Brand.Name)
                         |
                         @Html.DisplayFor(modelItem => item.Category.CategoryName)
 
-                    </p>
+                    </p>*@
                     <h4>
                         <b><u>@Html.DisplayFor(modelItem => item.ProductName)</u></b>
                     </h4>
@@ -49,14 +73,34 @@
                 </div>
                 <br />
                 <p style="text-align:center;">
-                    @*@Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new { @class = "btn btn-success" }) |*@
-                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-default" })                </p>
+                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-primary" })<br /><br />
+                    @Html.ActionLink("Add Special", "#", new { id = item.ProductID }, new { @class = "btn btn-primary" })<br /><br />
+                    @Html.ActionLink("Add To Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-default" })
+
+
+                    <!--if ()
+                    {
+                    }
+                    else
+                    {
+
+                    }
+
+                    if ()
+                    {-->
+                    @*@Html.ActionLink("Add Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })*@
+                    <!--}
+                    else
+                    {
+
+                    }-->
+                </p>
             </div>
             <br />
         }
     </div>
 
-    
+
 
     <div class="col-md-12">
         <hr />

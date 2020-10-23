@@ -3,8 +3,8 @@
     ViewBag.Title = "Your Shopping Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2><u>@ViewBag.User</u></h2>
-<h2>Your Shopping Cart</h2>
+
+<h2><u>Your Shopping Cart : @ViewBag.User</u></h2>
 <br />
 <div class="form-inline">
     @{
@@ -20,54 +20,57 @@
 <div class="form-inline" id="printdivcontent">
     @using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
     {
-        <table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Quantity <input type="submit" value="Update" class="btn btn-default pull-right" /></th>
-                <th>Sub</th>
-                <th>Operations</th>
-            </tr>
+        if (s > 0)
+        {
+            <div style="text-align: left; border-top: 2px solid black; background-color:gray; padding: 5px;">
+
+                <input type="submit" value="Update Quantity" class="btn btn-default btn-primary" />
+
+            </div>
+        }
+        <br />
+        <div class="table table-responsive table-hover table-condensed" style="border:2px solid gray; padding: 5px;">
             @if ((List<Item>)Session["cart"] != null)
             {
                 foreach (var item in (List<Item>)Session["cart"])
                 {
                     s = s + item.Pr.Price * item.Quantity;
-                    <tr>
-                        <td>@item.Pr.ProductName</td>
-                        <td>
+                    <div class="col-md-3" style="border:1px solid black; padding: 5px;">
+                        <div style="background-color: aliceblue;padding: 5px;">
                             @if (item.Pr.ProductPics != null)
                             {
                                 var base64 = Convert.ToBase64String(item.Pr.ProductPics);
                                 var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
 
-                                <img src='@imgsrc' style="width:100px;height:100px" class="img-circle" />
+                                <img src='@imgsrc' class="img-responsive" />
                             }
-                        </td>
-                        <td>R @item.Pr.Price</td>
-                        <td><input type="text" name="quantity" value="@item.Quantity" class="form-control" /></td>
-                        <td>
-                            R @(item.Pr.Price * item.Quantity)
-                        </td>
-                        <td>@Html.ActionLink("Remove Item", "Delete", "ShoppingCart", new { id = item.Pr.ProductID }, new { @class = "btn btn-default" })</td>
-                    </tr>
+                            <p><u>@item.Pr.ProductName</u></p>
+
+                            <p><b>Price : R @item.Pr.Price</b></p>
+                            <p><input type="text" name="quantity" value="@item.Quantity" class="form-control" /> </p>
+                            <p>
+                                <b><u>Sub Total : R @(item.Pr.Price * item.Quantity)</u></b>
+                            </p>
+                            <p>@Html.ActionLink("Remove Item", "Delete", "ShoppingCart", new { id = item.Pr.ProductID }, new { @class = "btn btn-danger" })</p>
+                        </div>
+
+                    </div>
 
                 }
             }
             else
             {
-                <tr class="row">
-                    <td>
+                <div class="col-md-6" style="border:1px solid black; padding: 5px;">
+                    <p style="background-color: aliceblue;padding: 5px;">
                         <h3>Please Add Products To Cart From the Catalogue.</h3>
-                    </td>
-                </tr>
+                    </p>
+                </div>
             }
-        </table>
+        </div>
         <br />
         <p>
-            <h3>
-                Total Amount : R @s
+            <h3 style="background-color: gray;">
+                Total Amount : <b>R @s</b>
             </h3>
         </p>
     }
@@ -90,13 +93,11 @@
         else
         {
             <span class="btn btn-danger">You must be Logged in To Check-Out.</span>
+            @*<button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print Order.</button>*@
         }
-
-        <button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print Order.</button>
-
     </div>
 </div>
-<script type="text/javascript">
+@*<script type="text/javascript">
     function PrintDiv() {
         var divContents = document.getElementById("printdivcontent").innerHTML;
         var printWindow = window.open('', '', 'height=800,width=1000');
@@ -107,4 +108,4 @@
         printWindow.document.close();
         printWindow.print();
     }
-</script>
+</script>*@

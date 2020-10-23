@@ -5,7 +5,7 @@
 }
 @using (Html.BeginForm("customerOrders", "MyUser", FormMethod.Get))
 {
-<div class="row" style="background-color: black; padding: 5px">
+<div class="row" style="background-color: black; padding: 10px;">
     <div style="text-align:center;">
         @Html.ActionLink("Processing Orders", "customerOrders", "MyUser", new { searchWord = "Processing" }, new { @class = "btn  btn-primary" }) |
         @Html.ActionLink("Approved Orders", "customerOrders", "MyUser", new { searchWord = "Approved" }, new { @class = "btn  btn-success" }) |
@@ -14,16 +14,19 @@
         @Html.ActionLink("Cancelled Orders", "customerOrders", "MyUser", new { searchWord = "Cancelled" }, new { @class = "btn  btn-danger" }) |
         @Html.ActionLink("Refresh", "customerOrders", "MyUser", null, new { @class = "btn  btn-primary" })
     </div>
-    <br />
 </div>
 }
 <br />
 
-<p>
-    <u>All Your Orders</u>
-</p>
+<h3 style="border-top:1px solid black;">
+    <b>
+        <u>All Orders</u>
+        <u class="pull-right">@Html.ActionLink("BIN", "#",null, new { @class="glyphicon-bishop"})</u>
+    </b>
+    
+</h3>
 
-<table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
+<table class="table table-responsive table-hover table-condensed" id="UsersWithRoles">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.OrderName)
@@ -81,60 +84,5 @@
 </p>
 <hr />
 
-@*<h2>Recieved Orders</h2>
-    <p>
-        <u>All Recieved Orders</u>
-    </p>
-    <table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CustomerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CustomerPhone)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.CustomerAddress)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            if (item.Status == "Recieved")
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustomerName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustomerPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CustomerAddress)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Order Details", "Details", "Orders", new { id = item.OrderId }, null)
-                    </td>
-                </tr>
-            }
-
-        }
-
-    </table>
-    <br />*@
 @Html.ActionLink("Back To Home", "Index", "MyUser", null, new { @class = "btn btn-default" })
 
