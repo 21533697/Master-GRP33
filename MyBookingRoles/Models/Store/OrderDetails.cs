@@ -13,11 +13,14 @@ namespace MyBookingRoles.Models.Store
         public int OrderDetailsId { get; set; }
         public int OrderId { get; set; }
         public int ProdId { get; set; }
+        public string ProdName { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
 
         public virtual Order Orders { get; set; }
         public virtual Product Prod { get; set; }
+
+        //public ApplicationDbContext dmm = new ApplicationDbContext();
     }
 }

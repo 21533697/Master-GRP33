@@ -26,12 +26,16 @@ namespace Studio45.Controllers.Store
                            orderby d.Brand.Name
                            select d.Brand.Name;
 
+            //
             GenreLst.AddRange(GenreQry.Distinct());
             ViewBag.movieGenre = new SelectList(GenreLst);
 
+            //
             var movies = from m in db.Products
+                         where m.IsVisible == true && m.InStoreQuantity > 0
                          select m;
 
+            //
             if (!String.IsNullOrEmpty(searchWord))
             {
                 movies = movies.Where(s => s.ProductName.Contains(searchWord));

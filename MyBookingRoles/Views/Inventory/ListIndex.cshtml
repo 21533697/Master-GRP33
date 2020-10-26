@@ -8,7 +8,7 @@
 {
     <div class="row" style="background-color: black; padding: 10px;">
         <div class="col-md-2">
-            <h4>Categ</h4>
+            <h4>Inventory Sort</h4>
         </div>
         <div class="col-md-2">
             @Html.DropDownList("movieGenre", null, htmlAttributes: new { @class = "form-control" })
@@ -24,7 +24,7 @@
         </div>
     </div>
 }
-
+<br />
 <div class="jumbotron" style="text-align: center; padding: 10px;">
     <h2>Inventory Management</h2>
     <div style="padding: 5px;">
@@ -34,7 +34,7 @@
             @Html.ActionLink("Manage Features", "#", "#", null, new { @class = "btn btn-success" })
         </p>
         <br />
-        <p style="background-color: aqua;">Product Quantity <b>Sum : @ViewBag.prodQ</b> | Out of Stock Product <b>Sum : @ViewBag.ordQ</b></p>
+        <p style="background-color: aqua;">All Product Quantity <b>Sum : @ViewBag.prodQ</p>
     </div>
 </div>
 <br />
@@ -44,8 +44,9 @@
         {
             var base64 = "";
             var imgsrc = "";
+            var Ccolor = "white";
 
-            <div class="col-md-2" style="text-align:center; border: 1px solid black; padding: 5px;">
+            <div class="col-md-2" style="text-align:center; border: 1px solid black; margin: 5px;">
 
                 @if (item.ProductPics != null)
                 {
@@ -54,31 +55,53 @@
 
                     <img src='@imgsrc' class="img-responsive" />
                 }
-                <br />
-                <div style="border: 1px dotted white;">
 
-                    <h4>
+                @*<br />*@
+
+                @if (item.InStoreQuantity < 100)
+                {
+                    Ccolor = "firebrick";
+                }
+
+                <div style="border: 1px dotted white; background-color: @Ccolor">
+                    <p>
                         <b><u>@Html.DisplayFor(modelItem => item.ProductName)</u></b>
-                    </h4>
+                    </p>
                     <p>
                         @Html.DisplayFor(modelItem => item.InStoreQuantity) &nbsp;
                         | &nbsp;
                         @Html.DisplayFor(modelItem => item.IsVisible)
                     </p>
                     <p>
-                        @Html.DisplayFor(modelItem => item.Discount)
+                        R : @Html.DisplayFor(modelItem => item.Discount)
+                    </p>
+                    
+                    @*<br />*@
+                    <p style="text-align:center;">
+                        @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-success" })<br /><br />
+
+                        @if (item.IsFeatured == false)
+                        {
+                            @Html.ActionLink("Add To Feature", "AddToFeature", new { id = item.ProductID }, new { @class = "btn btn-danger" });<br /><br />
+                        }
+                        else if (item.IsFeatured == true)
+                        {
+                            @Html.ActionLink("Cancel Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" });<br /><br />
+                        }
+
+
+                        @if (item.Discount > 0)
+                        {
+                            @Html.ActionLink("Cancel Special", "CancelSpecial", new { id = item.ProductID }, new { @class = "btn btn-primary" });
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Add To Special", "AddToSpecial", new { id = item.ProductID }, new { @class = "btn btn-primary" });
+
+                        }
                     </p>
                 </div>
-                <br />
-                <p style="text-align:center;">
-                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-success" })<br />
-                    @Html.ActionLink("Add Special", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })<br />
-                    @Html.ActionLink("Add To Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })<br />
-                    @Html.ActionLink("Add To Discount", "AddToDiscounts", "Discount", new { prodId = item.ProductID }, new { @class = "btn btn-primary" })
-
-                </p>
             </div>
-            <br />
         }
     </div>
 
@@ -87,7 +110,6 @@
         <br />
         <div class="row">
             @Html.ActionLink("Back To SuperADmin", "Index", "SuperAdmin", null, new { @class = "btn btn-primary" })
-
         </div>
     </div>
 </div>

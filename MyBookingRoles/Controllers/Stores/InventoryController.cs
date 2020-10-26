@@ -38,7 +38,6 @@ namespace MyBookingRoles.Controllers.Stores
                          select m;
 
             ViewBag.prodQ = db.Products.Sum(m=>m.InStoreQuantity);
-            ViewBag.ordQ = db.OrderDetails.Sum(m=>m.Quantity);
 
             if (!String.IsNullOrEmpty(searchWord))
             {
@@ -60,6 +59,11 @@ namespace MyBookingRoles.Controllers.Stores
             //return View(db.Products.ToList());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Inventory AddQuantity
 
         public ActionResult AddQuantity(int? id)
@@ -84,13 +88,91 @@ namespace MyBookingRoles.Controllers.Stores
         public ActionResult AddQuantity(int id, FormCollection fc)
         {
             int q = System.Convert.ToInt32(fc["AddedQuantity"]);
+
             // write code to add quantity to product
+            if(q > 0)
+            {
+                Product product = db.Products.Find(id);
+
+                product.InStoreQuantity += q;
+                product.IsVisible = true;
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("ListIndex");
+            }
+
+            return View(id);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult AddToSpecial(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Product product = db.Products.Find(id);
-            product.InStoreQuantity += q;
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult AddToSpecial(int id, FormCollection fc)
+        {
+            decimal q = System.Convert.ToDecimal(fc["AddDiscount"]);
+
+            // write code to add Discount to product
+            Product product = db.Products.Find(id);
+
+            product.Discount = q;
+            product.Price -= q;
+            product.IsOnSpecial = true;
+
             db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
 
             return RedirectToAction("ListIndex");
+        }
+
+        public ActionResult CancelSpecial(int id)
+        {
+            Product product = db.Products.Find(id);
+            decimal zero = 0;
+
+            var result = product.Price += product.Discount;
+
+            if(result >= product.Price)
+            {
+                product.Discount = zero;
+            }
+            else
+            {
+                product.Discount = product.Discount;
+            }
+
+            product.IsOnSpecial = false;
+
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ListIndex",new { id = product.ProductID});
+        }
+
+
+        public ActionResult AddToFeature(int id)
+        {
+            Product product = db.Products.Find(id);
+
+            return RedirectToAction("ListIndex", new { id = product.ProductID });
         }
     }
 }
