@@ -3025,3 +3025,5 @@ C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingR
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.Migrations.featandspecial.resources
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\bin\PayPal.dll
 C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\bin\PayPal.xml
+C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.Migrations.Discount.resources
+C:\Users\koolj\Documents\GitHub\Master-GRP33\MyBookingRoles\obj\Debug\MyBookingRoles.Migrations.Discountdeletmodel.resources

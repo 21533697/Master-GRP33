@@ -49,5 +49,8 @@ namespace MyBookingRoles.Models.Store
 
         [Display(Name = "Is On Special")]
         public bool IsOnSpecial { get; set; }
+
+        [Display(Name = "Product Dsicount")]
+        public decimal Discount { get; set; }
     }
 }

@@ -56,51 +56,31 @@
                 }
                 <br />
                 <div style="border: 1px dotted white;">
-                    @*<p>
-                        @Html.DisplayFor(modelItem => item.Brand.Name)
-                        |
-                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
 
-                    </p>*@
                     <h4>
                         <b><u>@Html.DisplayFor(modelItem => item.ProductName)</u></b>
                     </h4>
                     <p>
-                        @Html.DisplayFor(modelItem => item.InStoreQuantity)
-                        |
+                        @Html.DisplayFor(modelItem => item.InStoreQuantity) &nbsp;
+                        | &nbsp;
                         @Html.DisplayFor(modelItem => item.IsVisible)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Discount)
                     </p>
                 </div>
                 <br />
                 <p style="text-align:center;">
-                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-primary" })<br /><br />
-                    @Html.ActionLink("Add Special", "#", new { id = item.ProductID }, new { @class = "btn btn-primary" })<br /><br />
-                    @Html.ActionLink("Add To Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Add Quantity", "AddQuantity", new { id = item.ProductID }, new { @class = "btn btn-success" })<br />
+                    @Html.ActionLink("Add Special", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })<br />
+                    @Html.ActionLink("Add To Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })<br />
+                    @Html.ActionLink("Add To Discount", "AddToDiscounts", "Discount", new { prodId = item.ProductID }, new { @class = "btn btn-primary" })
 
-
-                    <!--if ()
-                    {
-                    }
-                    else
-                    {
-
-                    }
-
-                    if ()
-                    {-->
-                    @*@Html.ActionLink("Add Feature", "#", new { id = item.ProductID }, new { @class = "btn btn-danger" })*@
-                    <!--}
-                    else
-                    {
-
-                    }-->
                 </p>
             </div>
             <br />
         }
     </div>
-
-
 
     <div class="col-md-12">
         <hr />

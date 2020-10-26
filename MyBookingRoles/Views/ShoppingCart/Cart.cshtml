@@ -20,14 +20,12 @@
 <div class="form-inline" id="printdivcontent">
     @using (Html.BeginForm("Update", "ShoppingCart", FormMethod.Post))
     {
-        if (s > 0)
-        {
-            <div style="text-align: left; border-top: 2px solid black; background-color:gray; padding: 5px;">
+    <div style="text-align: left; border-top: 2px solid black; background-color:gray; padding: 5px;">
 
-                <input type="submit" value="Update Quantity" class="btn btn-default btn-primary" />
+        <input type="submit" value="Update Quantity" class="btn btn-default btn-primary" />
 
-            </div>
-        }
+    </div>
+
         <br />
         <div class="table table-responsive table-hover table-condensed" style="border:2px solid gray; padding: 5px;">
             @if ((List<Item>)Session["cart"] != null)
@@ -92,7 +90,9 @@
         }
         else
         {
-            <span class="btn btn-danger">You must be Logged in To Check-Out.</span>
+            @*<span class="btn btn-danger">You must be Logged in To Check-Out.</span>*@
+            @Html.ActionLink("Please Log in to Check-Out", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-danger" })
+
             @*<button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print Order.</button>*@
         }
     </div>

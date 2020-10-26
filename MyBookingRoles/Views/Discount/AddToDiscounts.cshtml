@@ -1,0 +1,33 @@
+﻿@model MyBookingRoles.Models.Store.Product
+@{
+    ViewBag.Title = "AddToDiscounts";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Add To Discounts : @Html.DisplayFor(model => model.ProductName) </h2>
+
+<div>
+    <p><b>Product Discount : <u> @Html.DisplayFor(model => model.Discount) </u></b></p>
+</div>
+@using (Html.BeginForm("AddToDiscounts", "Discount", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="AddDiscount" class="form-control" />
+                <br />
+                <input type="submit" value="Add Discount" class="btn btn-default" />
+
+            </div>
+
+        </div>
+    </div>
+}
+<div class="col-md-12">
+    <div class="row">
+        @Html.ActionLink("Back To Discounts", "Discounts", "Discount", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+

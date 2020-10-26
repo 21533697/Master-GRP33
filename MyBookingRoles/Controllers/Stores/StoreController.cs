@@ -43,8 +43,6 @@ namespace Studio45.Controllers.Store
             }
 
             return View(movies);
-
-            //return View(db.Products.Where(p => p.ProductName.Contains(searchWord) || searchWord == null && p.IsVisible == true).ToList());
         }
 
         // GET: ProductDetails

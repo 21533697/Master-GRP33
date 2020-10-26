@@ -42,6 +42,7 @@ namespace MyBookingRoles.Controllers.Stores
             return RedirectToAction("Index");
         }
 
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {

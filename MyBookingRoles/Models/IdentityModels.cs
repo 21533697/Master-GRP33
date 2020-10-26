@@ -38,7 +38,6 @@ namespace MyBookingRoles.Models
         //Store Internal
         public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.Category> Category { get; set; }
         public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.Brand> Brands { get; set; }
-        public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.Discount> Discounts { get; set; }
         public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.Product> Products { get; set; }
         public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.Order> Orders { get; set; }
         public System.Data.Entity.DbSet<MyBookingRoles.Models.Store.OrderDetails> OrderDetails { get; set; }

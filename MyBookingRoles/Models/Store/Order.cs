@@ -37,7 +37,7 @@ namespace MyBookingRoles.Models.Store
         public void SendMail()
         {
             var subject = "Studio Foto45 Purchase Order Details";
-            var body = "Dear " + CustomerName + ", <br /><br />Order : <b style='color: green'>" + OrderName +" Was Successfull!</b><br />Delivery to -<b>"+ CustomerAddress + "</b>-</b><br /> Please Login to <b>Studio Foto45!</b> for your Orders.<hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
+            var body = "Dear " + CustomerName + ", <br /><br />Order : <b style='color: green'>" + OrderName +" Was Successfull!</b><br />Delivery to -<b>"+ CustomerAddress + "</b>-</b><br /> Your Order Will be delivered in 6-7 Working day. Please Login to <b>Studio Foto45!</b> for your Orders.<hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
 
             //Copy from here
             //Change @Body content
