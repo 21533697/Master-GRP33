@@ -45,6 +45,11 @@ namespace MyBookingRoles.Controllers
         {
             Order ord = context.Orders.Find(id);
             ord.Status = "Cancelled";
+
+            string subject = ord.OrderName + " Status Update.";
+            string body = "<b>Order : " + ord.OrderName + " Your Order Has Been Cancelled. <b /><br /><br /><hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
+            ord.SendMail(subject, body);
+
             context.Entry(ord).State = EntityState.Modified;
             context.SaveChangesAsync();
 

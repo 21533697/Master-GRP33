@@ -22,23 +22,12 @@ namespace MyBookingRoles.Models.Store
         public string CustomerEmail { get; set; }
         public string CustomerAddress { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227: CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
-
-        //
-        //public string setOrderName()
-        //{
-        //    OrderName = CustomerName + "-" + OrderDate + "-" + PaymentAmount;
-        //    return OrderName;
-        //}
 
         ///Email Notification///
         ///Please provide all the emails sent to clients in order
-        public void SendMail()
+        public void SendMail(string subject,string body)
         {
-            var subject = "Studio Foto45 Purchase Order Details";
-            var body = "Dear " + CustomerName + ", <br /><br />Order : <b style='color: green'>" + OrderName +" Was Successfull!</b><br />Delivery to -<b>"+ CustomerAddress + "</b>-</b><br /> Your Order Will be delivered in 6-7 Working day. Please Login to <b>Studio Foto45!</b> for your Orders.<hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
-
             //Copy from here
             //Change @Body content
             string fromEmail = System.Configuration.ConfigurationManager.AppSettings["fromEmail"].ToString();

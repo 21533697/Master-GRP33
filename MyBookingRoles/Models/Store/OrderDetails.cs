@@ -20,7 +20,5 @@ namespace MyBookingRoles.Models.Store
 
         public virtual Order Orders { get; set; }
         public virtual Product Prod { get; set; }
-
-        //public ApplicationDbContext dmm = new ApplicationDbContext();
     }
 }

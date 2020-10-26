@@ -118,13 +118,19 @@ namespace MyBookingRoles.Controllers.Store
                 CustomerName = frc["custName"],
                 CustomerPhone = frc["custPhone"],
                 CustomerEmail = frc["custEmail"],
-                CustomerAddress = frc["custAddress"],
+                CustomerAddress = frc["Street"] +","+ frc["Suburb"] + "," + frc["City"] + "," + frc["Province"],
                 OrderDate = DateTime.Now,
                 PaymentType = "PayPal",
                 Status = "Processing",
                 OrderName = frc["custName"] + "-" + DateTime.Now + "-" + System.Convert.ToDouble(frc["TotalAmount"])
             };
-            order.SendMail();
+
+            //Email
+            string subject = "Studio Foto45 Purchase Order Details";
+            string body = "Dear " + order.CustomerName + ", <br /><br />Order : <b style='color: green'>" + order.OrderName + "</b> Was Successfull! <br />Delivery to -<b>" + order.CustomerAddress + "</b>-</b><br /> Your Order Will be delivered in 6-7 Working day. Please Login to <b>Studio Foto45!</b> for your Orders.<hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
+            order.SendMail(subject,body);
+            
+            //Db Saving
             context.Orders.Add(order);
             context.SaveChanges();
             
@@ -137,6 +143,7 @@ namespace MyBookingRoles.Controllers.Store
                     ProdId = cart1.Pr.ProductID,
                     Quantity = cart1.Quantity,
                     Price = cart1.Pr.Price,
+                    ProdName = cart1.Pr.ProductName
                  };
 
                 context.OrderDetails.Add(item1);

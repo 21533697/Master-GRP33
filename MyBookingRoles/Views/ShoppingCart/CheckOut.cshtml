@@ -12,7 +12,7 @@
 }
 <div class="form-inline">
     <h2>Your Ordered Products</h2>
-    <table class="table table-bordered table-hover table-condensed">
+    <table class="table table-responsive table-hover table-condensed">
         <tr>
             <th>Name</th>
             <th>Price</th>
@@ -57,7 +57,8 @@
         </h3>
     </p>
 
-    <hr />
+    <br />
+    <br />
     @*<ul>
         <li>Add user Address full Details</li>
     </ul>*@
@@ -66,11 +67,13 @@
         <div class="form-inline">
             @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customerform" }))
             {
-                <h2 style="text-align:center; background-color: gray;">Customer & Delivery Information</h2>
-                <table class="table table-bordered table-hover table-condensed">
+                <table class="table table-responsive table-condensed">
+                    <tr>
+                        <td colspan="2" style="text-align: center; background-color: gray;"><h3><u>Delivery Address</u></h3></td>
+                    </tr>
                     <tr>
                         <td>Total Amount</td>
-                        <td>R <input type="text" name="TotalAmount" value="@s" readonly class="form-control"/></td>
+                        <td>R <input type="text" name="TotalAmount" value="@s" readonly class="form-control" /></td>
                     </tr>
                     <tr>
                         <td>Customer Name</td>
@@ -82,16 +85,39 @@
                     </tr>
                     <tr>
                         <td>Customer Email</td>
-                        <td>&nbsp; &nbsp; <input type="text" name="custEmail" readonly value="@ViewBag.User" class="form-control"/></td>
+                        <td>&nbsp; &nbsp; <input type="text" name="custEmail" readonly value="@ViewBag.User" class="form-control" /></td>
                     </tr>
                     <tr>
-                        <td>Customer Address</td>
-                        <td>&nbsp; &nbsp; <input type="text" name="custAddress" required class="form-control" /></td>
+                        <td colspan="2" style="text-align: center; background-color: gray;"><h3><u>Delivery Address</u></h3></td>
+                        
                     </tr>
-
+                    <tr>
+                        <td>Street</td>
+                        <td>&nbsp; &nbsp; <input type="text" name="Street" required class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>Suburb</td>
+                        <td>&nbsp; &nbsp; <input type="text" name="Suburb" required class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>&nbsp; &nbsp; <input type="text" name="City" required class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>Province</td>
+                        <td>&nbsp; &nbsp; <input type="text" name="Province" required class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td>&nbsp; &nbsp; <input type="text" name="Country" required class="form-control" /></td>
+                    </tr>
+                    
                 </table>
-                <div class="form-group">
-                    <input type="submit" value="Process Order" class="btn btn-success"/>
+                <hr />
+                <div class="form-group" >
+                    
+                    <br />
+                    <input type="submit" value="Process Order" class="btn btn-success" />
                 </div>
             }
         </div>

@@ -27,8 +27,14 @@ namespace MyBookingRoles.Controllers.Stores
         {
             Order ord = db.Orders.Find(id);
             ord.Status = "Approved";
+
+            string subject = ord.OrderName + " Status Update.";
+            string body = "Order : " + ord.OrderName + "<br /><b>Your Order Has Been Approved And Has Sent To Shipping. <b /><br /><br /><hr /><b style='color: red'>Please Do not reply</b>.<br /> Thanks & Regards, <br /><b>Studio Foto45!</b>";
+            ord.SendMail(subject, body);
+
             db.Entry(ord).State = EntityState.Modified;
             db.SaveChangesAsync();
+            
 
             return RedirectToAction("Index", new { id = ord.OrderId });
         }
