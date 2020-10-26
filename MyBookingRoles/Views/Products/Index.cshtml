@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Add New Product", "Create", null, new { @class = "btn btn-default" })
 </p>
-<table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
+<table class="table table-responsive table-hover table-condensed" id="UsersWithRoles">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Brand.Name)
@@ -28,9 +28,6 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InStoreQuantity)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsVisible)
         </th>
         <th>
@@ -38,6 +35,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsOnSpecial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
         </th>
         <th style="background-color: gray;text-align:center;">Actions</th>
     </tr>
@@ -69,9 +69,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-         <td>
-            @Html.DisplayFor(modelItem => item.InStoreQuantity)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsVisible)
         </td>
@@ -80,6 +77,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsOnSpecial)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Discount)
         </td>
         <td style="text-align:center;">
             @*@Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new { @class = "btn btn-success" }) |*@

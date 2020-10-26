@@ -257,6 +257,10 @@
     <Compile Include="Migrations\202010252021382_Discount delet model.Designer.cs">
       <DependentUpon>202010252021382_Discount delet model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010261338572_nameP.cs" />
+    <Compile Include="Migrations\202010261338572_nameP.Designer.cs">
+      <DependentUpon>202010261338572_nameP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -387,7 +391,7 @@
     <Content Include="Views\DeliverySystem\DeliveryDashboard.cshtml" />
     <Content Include="Views\Inventory\ListIndex.cshtml" />
     <Content Include="Views\Inventory\AddQuantity.cshtml" />
-    <Content Include="Views\Discount\AddToDiscounts.cshtml" />
+    <Content Include="Views\Inventory\AddToSpecial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -404,6 +408,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\Site_Imaes\" />
+    <Folder Include="Views\Discount\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009022021118_BrandVisibility.resx">
@@ -441,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010252021382_Discount delet model.resx">
       <DependentUpon>202010252021382_Discount delet model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261338572_nameP.resx">
+      <DependentUpon>202010261338572_nameP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

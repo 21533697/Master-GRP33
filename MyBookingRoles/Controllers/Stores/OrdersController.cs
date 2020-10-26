@@ -14,13 +14,14 @@ namespace MyBookingRoles.Controllers.Stores
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize(Roles = "SuperAdmin")]
         // GET: Orders
+        [Authorize(Roles = "SuperAdmin")]
         public ActionResult Index(string searchWord)
         {
             return View(db.Orders.Where(p => p.Status.Contains(searchWord) || searchWord == null).ToList());
         }
 
+        //
         [Authorize(Roles = "SuperAdmin")]
         public ActionResult ApproveOrder(int id)
         {
@@ -32,17 +33,6 @@ namespace MyBookingRoles.Controllers.Stores
             return RedirectToAction("Index", new { id = ord.OrderId });
         }
 
-        [Authorize(Roles = "SuperAdmin")]
-        public ActionResult DeleteOrder(int id)
-        {
-            Order ord = db.Orders.Find(id);
-            db.Orders.Remove(ord);
-            db.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,14 +42,23 @@ namespace MyBookingRoles.Controllers.Stores
             }
             //var orderD = db.OrderDetails.Where(o => o.OrderId == id);
             var ord = db.Orders.Find(id);
-            
-
-
             if(ord == null)
             {
                 return HttpNotFound();
             }
+
             return View(ord);
+        }
+
+        //
+        [Authorize(Roles = "SuperAdmin")]
+        public ActionResult DeleteOrder(int id)
+        {
+            Order ord = db.Orders.Find(id);
+            db.Orders.Remove(ord);
+            db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
 
         //// GET: Orders/Edit/5

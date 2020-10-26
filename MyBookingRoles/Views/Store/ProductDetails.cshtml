@@ -6,9 +6,19 @@
 }
 
 <h2>
-    @Html.DisplayFor(model => model.ProductName) - Details
+    <u>@Html.DisplayFor(model => model.ProductName) - Details</u>
 </h2>
+<p>
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        @Html.ActionLink("Manage Product Orders", "Index", "Products", new { id = Model.ProductID }, new { @class = "btn btn-default" })
 
+    }
+    else
+    {
+        @Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success" })
+    }
+</p>
 <div class="info">
     <hr />
     <div class="row">
@@ -61,40 +71,31 @@
             </h3>
 
             <h3 style="background-color: gray;">
-                @Html.DisplayName("Product Discount")
+                @Html.DisplayNameFor(model => model.Price)
             </h3>
 
             <p>
-                Subscription Discount : 
+                Subscription Discount : <b><u>R @Html.DisplayFor(model => model.Discount)</u></b>
             </p>
 
             <hr />
             <h3 style="background-color: gray;">
                 @Html.DisplayName("Purchase Details")
             </h3>
-            <p>
-                @if (User.IsInRole("SuperAdmin"))
-                {
-                    @Html.ActionLink("Manage Product Orders", "Index", "Products", new { id = Model.ProductID }, new { @class = "btn btn-default" })
-
-                }
-                else
-                {
-                    @Html.ActionLink("Order Now", "OrderNow", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success" })
-                }
-            </p>
+            
         </div>
     </div>
     <br />
 
 </div>
-
-
 <hr />
-@if (User.IsInRole("SuperAdmin"))
-{
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" });
-}
 <div>
-    @Html.ActionLink("Continue Shopping!", "ProdCatalogue", "Store", null, new { @class = "btn btn-default" });
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" });
+    }
+    else
+    {
+        @Html.ActionLink("Continue Shopping!", "ProdCatalogue", "Store", null, new { @class = "btn btn-primary" });
+    }
 </div>

@@ -6,6 +6,7 @@
 @using (Html.BeginForm("customerOrders", "MyUser", FormMethod.Get))
 {
 <div class="row" style="background-color: black; padding: 10px;">
+    <div class="col-md-2">Orders Sort</div>
     <div style="text-align:center;">
         @Html.ActionLink("Processing Orders", "customerOrders", "MyUser", new { searchWord = "Processing" }, new { @class = "btn  btn-primary" }) |
         @Html.ActionLink("Approved Orders", "customerOrders", "MyUser", new { searchWord = "Approved" }, new { @class = "btn  btn-success" }) |
@@ -21,7 +22,7 @@
 <h3 style="border-top:1px solid black;">
     <b>
         <u>All Orders</u>
-        <u class="pull-right">@Html.ActionLink("BIN", "#",null, new { @class="glyphicon-bishop"})</u>
+        @*<u class="pull-right">@Html.ActionLink("BIN", "#",null, new { @class="glyphicon-bishop"})</u>*@
     </b>
     
 </h3>
@@ -84,5 +85,5 @@
 </p>
 <hr />
 
-@Html.ActionLink("Back To Home", "Index", "MyUser", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Back To Home", "Index", "MyUser", null, new { @class = "btn btn-primary" })
 

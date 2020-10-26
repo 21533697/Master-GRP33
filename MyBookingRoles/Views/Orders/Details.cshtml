@@ -1,5 +1,5 @@
 ﻿@model MyBookingRoles.Models.Store.Order
-
+@using MyBookingRoles.Models.Store
 @{
     ViewBag.Title = Model.OrderName + "-Details";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -21,16 +21,16 @@
             <li>
                 Payment Amount : R @Html.DisplayFor(model => model.PaymentAmount)
             </li>
-            <br />
-            <li>
+            
+            <li><br />
                 <b>Status</b>
                 <h2 style="background-color: green;">
                     @Html.DisplayFor(model => model.Status)
                 </h2>
             </li>
-            <br />
+            
             <li><h4><u>Customer Information</u></h4></li>
-            <li>
+            <li><br />
                 Customer Name : @Html.DisplayFor(model => model.CustomerName)
             </li>
             <li>
@@ -55,13 +55,17 @@
     <h4><u>Total Order Price : R @Model.PaymentAmount</u></h4>
     <table class="table table-bordered table-hover table-condensed" id="UsersWithRoles">
         <tr>
-            <th>Product (Id)Name</th>
+            <th style="background-color: gray;">Product Name</th>
+            <th>Product Id</th>
             <th>Quantity</th>
             <th>Price</th>
         </tr>
         @foreach (var item in Model.OrderDetails)
         {
             <tr>
+                <td style="background-color: gray;">
+                    @Html.ActionLink("Product Details", "ProductDetails", "Store", new { id = item.ProdId }, new { @class = "btn btn-success" })
+                </td>
                 <td>@item.ProdId</td>
                 <td>@item.Quantity -item(s)</td>
                 <td>R @item.Price</td>
@@ -72,7 +76,7 @@
     <br />
 </div>
 
-<p>
+<div style="text-align:center;">
     @if (User.IsInRole("SuperAdmin"))
     {
         <p>
@@ -86,12 +90,13 @@
     else
     {
         <p>
-            @Html.ActionLink("Back to My Orders", "customerOrders", "MyUser", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Back to My Orders", "customerOrders", "MyUser", null, new { @class = "btn btn-primary" })
             |
             @Html.ActionLink("Cancel Order", "DeleteOrder", "MyUser", new { id = Model.OrderId }, new { @class = "btn btn-danger" })
         </p>
     }
-</p>
+</div>
+
 <hr />
 <p>
     <h2>To Do List</h2>
